@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:id="@+id/myToolBar"
+    android:background="@color/purple_500"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark"
+    >
+
+    <ImageButton
+        android:id="@+id/filter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_filter"
+        android:layout_gravity="right"
+        android:layout_marginRight="20dp"
+        android:background="#00FFFFFF"
+        app:tint="@color/white" />
+
+</androidx.appcompat.widget.Toolbar>
