@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
@@ -9,18 +9,17 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:cardElevation="1dp"
-        app:cardCornerRadius="5dp"
+        app:cardElevation="10dp"
+        app:cardCornerRadius="10dp"
         android:layout_margin="10dp"
         app:cardBackgroundColor="@color/white"
         app:cardPreventCornerOverlap="true"
-        app:contentPadding="5dp"
         app:cardUseCompatPadding="true"
         >
 
         <com.google.android.material.imageview.ShapeableImageView
             app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
-            android:background="@color/white"
+            android:background="@color/black"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:id="@+id/imageProfile"
@@ -39,21 +38,21 @@
 
         <TextView
             android:id="@+id/contestName"
-            android:layout_width="250dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:hint="Gautom Agarwal"
-            android:layout_gravity="center|top"
+            android:layout_gravity="center"
             android:textColor="@color/black"
             android:textSize="18sp"
             />
 
         <TextView
             android:id="@+id/contestDate"
-            android:layout_width="250dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
@@ -61,7 +60,7 @@
             android:maxLines="1"
             android:hint="8:05 Apr 30, Sunday"
             android:textSize="14sp"
-            android:layout_gravity="center|bottom"
+            android:layout_gravity="center"
             />
 
         <ImageButton
