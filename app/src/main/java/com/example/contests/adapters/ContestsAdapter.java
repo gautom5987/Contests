@@ -1,15 +1,15 @@
 package com.example.contests.adapters;
 
+import android.content.Intent;
+import android.provider.CalendarContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
-import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
-import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.volley.Response;
 import com.example.contests.R;
 import com.example.contests.databinding.ItemContainerContestsBinding;
 import com.example.contests.models.Contest;
@@ -104,6 +104,24 @@ public class ContestsAdapter extends RecyclerView.Adapter<ContestsAdapter.Contes
             }
 
             binding.getRoot().setOnClickListener(v -> contestListener.onContestClicked(contest));
+
+            binding.cal.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(Intent.ACTION_INSERT);
+                    intent.setData(CalendarContract.Events.CONTENT_URI);
+                    intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, contest.startTime);
+                    intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, contest.endTime);
+                    intent.putExtra(CalendarContract.Events.TITLE, contest.name);
+
+                    if(intent.resolveActivity(v.getContext().getPackageManager())!=null) {
+                        v.getContext().startActivity(intent);
+                    } else {
+                        Toast.makeText(v.getContext(), "No Calendar Application!",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
         }
 
         String getCodechefDate(String str) {
