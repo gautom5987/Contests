@@ -53,7 +53,7 @@ public class ContestsAdapter extends RecyclerView.Adapter<ContestsAdapter.Contes
         return contestList.size();
     }
 
-    class ContestViewHolder extends RecyclerView.ViewHolder {
+    public class ContestViewHolder extends RecyclerView.ViewHolder {
         ItemContainerContestsBinding binding;
 
         public ContestViewHolder(@NonNull ItemContainerContestsBinding itemView) {
@@ -113,6 +113,7 @@ public class ContestsAdapter extends RecyclerView.Adapter<ContestsAdapter.Contes
                     intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, contest.startTime);
                     intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, contest.endTime);
                     intent.putExtra(CalendarContract.Events.TITLE, contest.name);
+                    intent.putExtra(CalendarContract.Events.DESCRIPTION, contest.url);
 
                     if(intent.resolveActivity(v.getContext().getPackageManager())!=null) {
                         v.getContext().startActivity(intent);
@@ -124,7 +125,7 @@ public class ContestsAdapter extends RecyclerView.Adapter<ContestsAdapter.Contes
             });
         }
 
-        String getCodechefDate(String str) {
+        public String getCodechefDate(String str) {
             String ans = str;
             try {
                 Date date =
@@ -137,7 +138,7 @@ public class ContestsAdapter extends RecyclerView.Adapter<ContestsAdapter.Contes
             return ans;
         }
 
-        String getReadableDate(String str) {
+        public String getReadableDate(String str) {
             LocalDateTime time = LocalDateTime.parse(str.substring(0,str.length()-2));
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm MMM, dd E");
             return time.format(formatter);

@@ -2,8 +2,12 @@ package com.example.contests.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -18,13 +22,20 @@ import com.example.contests.R;
 import com.example.contests.adapters.ContestsAdapter;
 import com.example.contests.databinding.ActivityMainBinding;
 import com.example.contests.models.Contest;
+import com.example.contests.utility.DateTime;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements ContestsAdapter.ContestListener {
 
@@ -92,6 +103,8 @@ public class MainActivity extends AppCompatActivity implements ContestsAdapter.C
                     }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                binding.progressBar.setVisibility(View.GONE);
+                binding.errorText.setVisibility(View.VISIBLE);
                 Log.d(TAG, "onErrorResponse: Failed!");
             }
         });
@@ -100,6 +113,30 @@ public class MainActivity extends AppCompatActivity implements ContestsAdapter.C
 
     @Override
     public void onContestClicked(Contest contest) {
+        DateTime dateTime = new DateTime();
 
+        String message = "Name : "+contest.name+"\n\n";
+        message += "Platform : "+contest.site+"\n\n";
+        if(contest.site.equals("CodeChef")) {
+            message += "Start time : "+dateTime.getCodechefDate(contest.startTime)+"\n\n";
+            message += "End time : "+dateTime.getCodechefDate(contest.endTime)+"\n\n";
+        } else {
+            message += "Start time : "+dateTime.getReadableDate(contest.startTime)+"\n\n";
+            message += "End time : "+dateTime.getReadableDate(contest.endTime)+"\n\n";
+        }
+
+
+        new AlertDialog.Builder(this)
+                .setMessage(message)
+                .setPositiveButton("View", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW,
+                                Uri.parse(contest.url));
+                        startActivity(browserIntent);
+                    }
+                })
+                .setNegativeButton("Ok",null)
+                .show();
     }
 }

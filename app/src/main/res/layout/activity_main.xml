@@ -19,6 +19,19 @@
         android:id="@+id/progressBar"
         />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:foregroundGravity="center_horizontal"
+        android:text="No Internet!"
+        android:visibility="gone"
+        android:id="@+id/errorText"
+        />
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_marginTop="?attr/actionBarSize"
         app:layout_constraintTop_toBottomOf="@id/toolBar"
