@@ -118,11 +118,11 @@ public class MainActivity extends AppCompatActivity implements ContestsAdapter.C
         String message = "Name : "+contest.name+"\n\n";
         message += "Platform : "+contest.site+"\n\n";
         if(contest.site.equals("CodeChef")) {
-            message += "Start time : "+dateTime.getCodechefDate(contest.startTime)+"\n\n";
-            message += "End time : "+dateTime.getCodechefDate(contest.endTime)+"\n\n";
+            message += "Start time : "+dateTime.getCodechefDate(contest.startTime)+" UTC\n\n";
+            message += "End time : "+dateTime.getCodechefDate(contest.endTime)+" UTC\n\n";
         } else {
-            message += "Start time : "+dateTime.getReadableDate(contest.startTime)+"\n\n";
-            message += "End time : "+dateTime.getReadableDate(contest.endTime)+"\n\n";
+            message += "Start time : "+dateTime.getReadableDate(contest.startTime)+" UTC\n\n";
+            message += "End time : "+dateTime.getReadableDate(contest.endTime)+" UTC\n\n";
         }
 
 
