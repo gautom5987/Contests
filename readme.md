@@ -7,4 +7,4 @@ Work to be done -
 3. Support for time zones.
 4. Widgets.
 5. Notification for contests.
-6. UI improvement.
+6. UI improvement(Material You).
