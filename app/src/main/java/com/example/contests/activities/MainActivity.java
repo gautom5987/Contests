@@ -55,8 +55,15 @@ public class MainActivity extends AppCompatActivity implements ContestsAdapter.C
 
         setSupportActionBar(binding.toolBar.myToolBar);
 
-        checkSharedPreferences();
         setListeners();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        binding.contestListView.setVisibility(View.GONE);
+        binding.progressBar.setVisibility(View.VISIBLE);
+        checkSharedPreferences();
         getContests();
     }
 

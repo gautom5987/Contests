@@ -57,7 +57,10 @@ public class SitesAdapter extends RecyclerView.Adapter<SitesAdapter.SiteViewHold
         }
 
         void setSiteData(Site site) {
+            SharedPreferences sharedPreferences =
+                    binding.getRoot().getContext().getSharedPreferences(Constants.SHARED_PREF_NAME,Context.MODE_PRIVATE);
             binding.siteName.setText(site.name);
+            binding.checkbox.setChecked(sharedPreferences.getBoolean(site.name,true));
 
             switch (site.name) {
                 case Constants.CODE_CODECHEF :
@@ -96,7 +99,9 @@ public class SitesAdapter extends RecyclerView.Adapter<SitesAdapter.SiteViewHold
             binding.checkbox.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putBoolean(site.name,binding.checkbox.isChecked());
+                    editor.apply();
                 }
             });
         }
