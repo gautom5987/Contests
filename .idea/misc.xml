@@ -3,10 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/gargg/AndroidStudioProjects/contests/app/src/main/res/drawable/ic_calendar_add.xml" value="0.1505" />
         <entry key="..\:/Users/gargg/AndroidStudioProjects/contests/app/src/main/res/layout/activity_filter.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/gargg/AndroidStudioProjects/contests/app/src/main/res/layout/activity_main.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/gargg/AndroidStudioProjects/contests/app/src/main/res/layout/app_bar.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/gargg/AndroidStudioProjects/contests/app/src/main/res/layout/item_container_contests.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/gargg/AndroidStudioProjects/contests/app/src/main/res/layout/item_container_sites.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/gargg/AndroidStudioProjects/contests/app/src/main/res/layout/temp.xml" value="0.27447916666666666" />
       </map>
     </option>
