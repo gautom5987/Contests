@@ -1,5 +1,7 @@
 package com.example.contests.adapters;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,7 @@ import com.example.contests.R;
 import com.example.contests.databinding.ItemContainerContestsBinding;
 import com.example.contests.databinding.ItemContainerSitesBinding;
 import com.example.contests.models.Site;
+import com.example.contests.utility.Constants;
 
 import java.util.List;
 
@@ -56,39 +59,46 @@ public class SitesAdapter extends RecyclerView.Adapter<SitesAdapter.SiteViewHold
         void setSiteData(Site site) {
             binding.siteName.setText(site.name);
 
-            switch (site.code) {
-                case "code_chef":
+            switch (site.name) {
+                case Constants.CODE_CODECHEF :
                     binding.siteLogo.setImageResource(R.drawable.codechef);
                     break;
-                case "codeforces":
-                case "codeforces_gym":
+                case Constants.CODE_CODEFORCES:
+                case Constants.CODE_CODEFORCES_GYM:
                     binding.siteLogo.setImageResource(R.drawable.codeforces);
                     break;
-                case "top_coder":
+                case Constants.CODE_TOPCODER:
                     binding.siteLogo.setImageResource(R.drawable.top_coder);
                     break;
-                case "at_coder":
+                case Constants.CODE_ATCODER:
                     binding.siteLogo.setImageResource(R.drawable.at_coder);
                     break;
-                case "cs_academy":
+                case Constants.CODE_CS_ACADEMY:
                     binding.siteLogo.setImageResource(R.drawable.cs);
                     break;
-                case "hacker_rank":
+                case Constants.CODE_HACKER_RANK:
                     binding.siteLogo.setImageResource(R.drawable.hacker_rank);
                     break;
-                case "hacker_earth":
+                case Constants.CODE_HACKER_EARTH:
                     binding.siteLogo.setImageResource(R.drawable.hacker_earth);
                     break;
-                case "kick_start":
+                case Constants.CODE_KICK_START:
                     binding.siteLogo.setImageResource(R.drawable.google);
                     break;
-                case "leet_code":
+                case Constants.CODE_LEET_CODE:
                     binding.siteLogo.setImageResource(R.drawable.leetcode);
                     break;
-                case "toph":
+                case Constants.CODE_TOPH:
                     binding.siteLogo.setImageResource(R.drawable.toph);
                     break;
             }
+
+            binding.checkbox.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
         }
     }
 

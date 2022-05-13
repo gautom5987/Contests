@@ -3,8 +3,10 @@ package com.example.contests.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
@@ -22,6 +24,7 @@ import com.example.contests.R;
 import com.example.contests.adapters.ContestsAdapter;
 import com.example.contests.databinding.ActivityMainBinding;
 import com.example.contests.models.Contest;
+import com.example.contests.utility.Constants;
 import com.example.contests.utility.DateTime;
 
 import org.json.JSONArray;
@@ -40,6 +43,7 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity implements ContestsAdapter.ContestListener {
 
     private ActivityMainBinding binding;
+    private SharedPreferences sharedPreferences;
 
     public static final String TAG = "MainActivity";
 
@@ -51,8 +55,32 @@ public class MainActivity extends AppCompatActivity implements ContestsAdapter.C
 
         setSupportActionBar(binding.toolBar.myToolBar);
 
+        checkSharedPreferences();
         setListeners();
         getContests();
+    }
+
+    void checkSharedPreferences() {
+        sharedPreferences = getSharedPreferences(Constants.SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        if(!sharedPreferences.getBoolean(Constants.IS_DATA_SET,false)) {
+            editor.putBoolean(Constants.CODE_ATCODER,true);
+            editor.putBoolean(Constants.CODE_CODECHEF,true);
+            editor.putBoolean(Constants.CODE_CODEFORCES,true);
+            editor.putBoolean(Constants.CODE_CODEFORCES_GYM,true);
+            editor.putBoolean(Constants.CODE_CS_ACADEMY,true);
+            editor.putBoolean(Constants.CODE_HACKER_EARTH,true);
+            editor.putBoolean(Constants.CODE_HACKER_RANK,true);
+            editor.putBoolean(Constants.CODE_KICK_START,true);
+            editor.putBoolean(Constants.CODE_LEET_CODE,true);
+            editor.putBoolean(Constants.CODE_TOPH,true);
+            editor.putBoolean(Constants.CODE_TOPCODER,true);
+
+            editor.putBoolean(Constants.IS_DATA_SET,true);
+
+            editor.apply();
+        }
     }
 
     private void setListeners() {
@@ -88,7 +116,9 @@ public class MainActivity extends AppCompatActivity implements ContestsAdapter.C
                                 contest.url = jsonObject.getString("url");
                                 contest.site = jsonObject.getString("site");
                                 contest.status = jsonObject.getString("status");
-                                contestList.add(contest);
+                                if(sharedPreferences.getBoolean(contest.site,true)) {
+                                    contestList.add(contest);
+                                }
                             }
                             ContestsAdapter contestsAdapter = new ContestsAdapter(contestList,
                                     MainActivity.this);

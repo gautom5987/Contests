@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.contests.R;
 import com.example.contests.databinding.ItemContainerContestsBinding;
 import com.example.contests.models.Contest;
+import com.example.contests.utility.Constants;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -63,42 +64,42 @@ public class ContestsAdapter extends RecyclerView.Adapter<ContestsAdapter.Contes
 
         void setContestData(Contest contest) {
             binding.contestName.setText(contest.name);
-            if(contest.site.equals("CodeChef")) {
+            if(contest.site.equals(Constants.CODE_CODECHEF)) {
                 binding.contestDate.setText(getCodechefDate(contest.startTime));
             } else {
                 binding.contestDate.setText(getReadableDate(contest.startTime));
             }
 
             switch (contest.site) {
-                case "CodeChef":
+                case Constants.CODE_CODECHEF:
                     binding.imageProfile.setImageResource(R.drawable.codechef);
                     break;
-                case "CodeForces":
-                case "codeforces_gym":
+                case Constants.CODE_CODEFORCES:
+                case Constants.CODE_CODEFORCES_GYM:
                     binding.imageProfile.setImageResource(R.drawable.codeforces);
                     break;
-                case "TopCoder":
+                case Constants.CODE_TOPCODER:
                     binding.imageProfile.setImageResource(R.drawable.top_coder);
                     break;
-                case "AtCoder":
+                case Constants.CODE_ATCODER:
                     binding.imageProfile.setImageResource(R.drawable.at_coder);
                     break;
-                case "CsAcademy":
+                case Constants.CODE_CS_ACADEMY:
                     binding.imageProfile.setImageResource(R.drawable.cs);
                     break;
-                case "HackerRank":
+                case Constants.CODE_HACKER_RANK:
                     binding.imageProfile.setImageResource(R.drawable.hacker_rank);
                     break;
-                case "HackerEarth":
+                case Constants.CODE_HACKER_EARTH:
                     binding.imageProfile.setImageResource(R.drawable.hacker_earth);
                     break;
-                case "Kick Start":
+                case Constants.CODE_KICK_START:
                     binding.imageProfile.setImageResource(R.drawable.google);
                     break;
-                case "LeetCode":
+                case Constants.CODE_LEET_CODE:
                     binding.imageProfile.setImageResource(R.drawable.leetcode);
                     break;
-                case "toph":
+                case Constants.CODE_TOPH:
                     binding.imageProfile.setImageResource(R.drawable.toph);
                     break;
             }
