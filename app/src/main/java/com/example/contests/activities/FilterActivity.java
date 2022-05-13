@@ -37,7 +37,17 @@ public class FilterActivity extends AppCompatActivity implements SitesAdapter.Si
         binding = ActivityFilterBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        setListeners();
         getSites();
+    }
+
+    private void setListeners() {
+        binding.toolBar.back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private void getSites() {
@@ -66,7 +76,6 @@ public class FilterActivity extends AppCompatActivity implements SitesAdapter.Si
                                     FilterActivity.this);
                             binding.sitesRecyclerView.setAdapter(sitesAdapter);
                             binding.sitesRecyclerView.setVisibility(View.VISIBLE);
-//                            binding.progressBar.setVisibility(View.GONE);
                         } catch (JSONException e) {
                             Log.d("demo", "onResponse: I was here");
                             e.printStackTrace();
@@ -75,9 +84,6 @@ public class FilterActivity extends AppCompatActivity implements SitesAdapter.Si
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-//                binding.progressBar.setVisibility(View.GONE);
-//                binding.errorText.setVisibility(View.VISIBLE);
-                Log.d("demo", "onErrorResponse: Failed!");
                 error.printStackTrace();
             }
         });

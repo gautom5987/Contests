@@ -11,16 +11,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:cardElevation="1dp"
         app:cardCornerRadius="5dp"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         app:cardBackgroundColor="@color/white"
         app:cardPreventCornerOverlap="true"
-        app:contentPadding="5dp"
         app:cardUseCompatPadding="true"
         >
 
         <com.google.android.material.imageview.ShapeableImageView
             app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
             android:background="@color/white"
+            android:layout_marginLeft="2dp"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:id="@+id/siteLogo"

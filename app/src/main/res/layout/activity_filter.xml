@@ -6,11 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".activities.FilterActivity">
 
+    <include android:id="@+id/toolBar" layout="@layout/filter_app_bar"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/sitesRecyclerView"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolBar"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         />
 
